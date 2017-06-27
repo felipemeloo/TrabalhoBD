@@ -28,16 +28,6 @@
 		overflow: hidden;
 	}
 
-	form {
-		background-color: rgba(0,0,0,0.5);
-		border-bottom: 1px solid rgba(0,0,0,0.7);
-		padding: 20px;
-		position: absolute;
-		width: 300px;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-	}
 
 	form input {
 		display: block;
@@ -168,7 +158,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		    // aqui eu mostro os valores de minha consulta
 		    echo "<tr><td>{$linha['origem']}</td><td>{$linha['destino']}</td>";
 		    echo "<td>{$linha['dt_partida']} </td><td> {$linha['dt_chegada']}</td>";
-		    echo "<form action='comprarpassagem.php' method ='POST'><td><input type='submit' value='Comprar Passagem'></td></tr>";
+		    echo "<td><form action='comprarpassagem.php?id=".$linha['id']."' method ='POST'><input type='submit' value='Comprar Passagem'></form></td></tr>";
 		    
 		}
 

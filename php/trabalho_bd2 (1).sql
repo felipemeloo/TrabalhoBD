@@ -2,9 +2,9 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 27-Jun-2017 às 18:50
--- Versão do servidor: 10.1.24-MariaDB
+-- Host: localhost
+-- Generation Time: Jun 27, 2017 at 11:34 PM
+-- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aviao`
+-- Table structure for table `aviao`
 --
 
 CREATE TABLE `aviao` (
@@ -35,7 +35,7 @@ CREATE TABLE `aviao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `aviao`
+-- Dumping data for table `aviao`
 --
 
 INSERT INTO `aviao` (`id`, `nome`, `num_poltronas`) VALUES
@@ -43,12 +43,13 @@ INSERT INTO `aviao` (`id`, `nome`, `num_poltronas`) VALUES
 (2, '', 300),
 (3, '', 300),
 (4, '', 400),
-(5, 'airbus 390 ', 150);
+(5, 'airbus 390 ', 150),
+(6, 'Airbus 310', 150);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `passagem`
+-- Table structure for table `passagem`
 --
 
 CREATE TABLE `passagem` (
@@ -57,20 +58,22 @@ CREATE TABLE `passagem` (
   `destino` varchar(255) NOT NULL,
   `dt_partida` date NOT NULL,
   `dt_chegada` date NOT NULL,
-  `num_poltrona` int(11) NOT NULL
+  `num_poltrona` int(11) NOT NULL,
+  `nome_passageiro` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `passagem`
+-- Dumping data for table `passagem`
 --
 
-INSERT INTO `passagem` (`id`, `origem`, `destino`, `dt_partida`, `dt_chegada`, `num_poltrona`) VALUES
-(1, 'BrasÃ­lia', 'Natal', '2017-06-14', '2017-06-30', 0);
+INSERT INTO `passagem` (`id`, `origem`, `destino`, `dt_partida`, `dt_chegada`, `num_poltrona`, `nome_passageiro`) VALUES
+(1, 'BrasÃ­lia', 'Natal', '2017-06-14', '2017-06-30', 0, 'Felipe de Melo PInto'),
+(2, 'Brasilia', 'Fortaleza', '2017-06-27', '2017-06-29', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -87,7 +90,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `login`, `senha`, `nome`, `email`, `endereco`, `dt_nasc`, `telefone`, `cpf`, `sexo`) VALUES
@@ -125,12 +128,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `aviao`
 --
 ALTER TABLE `aviao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `passagem`
 --
 ALTER TABLE `passagem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `usuario`
 --

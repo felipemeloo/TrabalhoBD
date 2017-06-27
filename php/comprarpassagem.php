@@ -137,17 +137,24 @@
 
 </style>
 <body>
+<?php
+	
+	include'bd.php';
+	$sql= "select * from passagem where id='".$_GET['id']."'"; 
+	$stmt = $con->prepare($sql);
+    $stmt->execute();
+    $valores = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <h1 id="filipe">Felipinho Linhas Aéreas</h1>
 		<div>
-		<form action="login.php" method="POST">
-		<form>
-			<h1>Passagem</h1>
-			<input type="text" placeholder="origem" name="origem">
-			<input type="text" placeholder="destino" name="destino">
-			<input type="date" placeholder="dt_saida" name="dt_saida">
-			<input type="date" placeholder="dt_chegada" name="dt_chegada">
+		<form action="compraefetivada.php?id=<?=$_GET['id']?>" method="POST">
+			<h1>Comprar</h1>
+			<input type="text" disabled placeholder="origem" name="origem" value="<?=$valores['origem']?>">
+			<input type="text" disabled placeholder="destino" name="destino" value="<?=$valores['destino']?>">
+			<input type="date" disabled placeholder="dt_saida" name="dt_saida" value="<?=$valores['dt_partida']?>">
+			<input type="date" disabled placeholder="dt_chegada" name="dt_chegada" value="<?=$valores['dt_chegada']?>">
 			<input type="text" placeholder="Nome do Passageiro " name="nome_passageiro">
-			<input type="submit" value="Cadastrar Passagem"><input type="reset" value="Limpar">
+			<input type="submit" value="Comprar Passagem"><input type="reset" value="Limpar">
 			<a href="index.php"><input type="button" value="Voltar"></a>
 		</form>
 	</div>
